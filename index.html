@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Video Hub Submission Portal</title>
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!--wistia uploader and logic-->
+    <link rel="stylesheet" href="//fast.wistia.com/assets/external/uploader.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//fast.wistia.com/assets/external/api.js" async></script>
+    <script>
+    window._wapiq = window._wapiq || [];
+    _wapiq.push(function(W) {
+      window.wistiaUploader = new W.Uploader({
+        accessToken: "74c3c5c8eedd5f5f44beec1c039f15cd9548531201843f78e2305a90956d5f60",
+        dropIn: "wistia_uploader",
+        projectId: "wbc5qadmov"
+      });
+      wistiaUploader.bind('uploadsuccess', function(file, media) {
+        console.log("The upload succeeded. Here's the media url! ", media.url);
+        $('#uploaded-video-id').html(media.url);
+        $('#uploaded-video-container').css('visibility', 'visible');
+      });
+    });
+    </script>
+
+    <style media="screen">
+
+      #uploaded-video-id {
+        display: inline-block;
+        background: #efefef;
+        padding: 5px;
+        border-radius: 3px;
+      }
+
+      #uploaded-video-container {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-sm">
+      <div class="row pt-5">
+        <div class="col">
+          <h1>MicroStrategy Video Hub and Submission Form</h1>
+        </div>
+      </div>
+      <div class="row pt-5">
+
+        <div class="col-sm-4">
+          <h3>Step 1. Upload video</h3>
+          <div class="" style="position: sticky; top: 20px;">
+            <div id="wistia_uploader" style="height:240px;width:100%;"></div>
+            <div id="uploaded-video-container">
+              <p>Copy the video ID <span id="uploaded-video-id"></span> into the form below!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <h3>Step 2. Complete form</h3>
+          <div class="airtable-form">
+            <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script><iframe class="airtable-embed airtable-dynamic-height" src="https://airtable.com/embed/shrcZSpWKI68s2nEq?backgroundColor=blue" frameborder="0" onmousewheel="" width="100%" height="1292" style="background: transparent; border: 1px solid #ccc;"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-5">
+        <div class="col">
+          <h3>Video Hub</h3>
+          <div class="airtable-table">
+            <iframe class="airtable-embed" src="https://airtable.com/embed/shrMQQtVGJEjNEST4?backgroundColor=blue&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+</html>
